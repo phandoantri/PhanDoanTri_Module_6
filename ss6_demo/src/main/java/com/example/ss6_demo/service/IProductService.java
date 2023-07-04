@@ -8,4 +8,6 @@ public interface IProductService {
     List<Product> findAll();
 
     void delete(int id);
+
+    void save(Product product);
 }

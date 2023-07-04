@@ -1,24 +1,34 @@
-package com.example.ss6_demo.model;
+package com.example.ss6_demo.dto;
 
-import javax.persistence.*;
+import com.example.ss6_demo.model.TypeProduct;
+import com.sun.istack.NotNull;
 
-@Entity
-@Table(name="product")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
+public class ProductDto {
+@NotNull
+    private Integer id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String code;
-    private double cost;
+    @NotNull
+    @Min(1)
+    private Double cost;
+    @NotBlank
     private String date;
     @ManyToOne
-    @JoinColumn(name = "id_product",referencedColumnName = "id")
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private TypeProduct typeProduct;
-    public Product() {
+
+    public ProductDto() {
     }
 
-    public Product(int id, String name, String code, double cost, String date, TypeProduct typeProduct) {
+
+    public ProductDto(int id, String name, String code, double cost, String date, TypeProduct typeProduct) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -74,4 +84,6 @@ public class Product {
     public void setTypeProduct(TypeProduct typeProduct) {
         this.typeProduct = typeProduct;
     }
+
+
 }

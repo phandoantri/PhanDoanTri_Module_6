@@ -1,5 +1,6 @@
 package com.example.ss6_demo.controller;
 
+import com.example.ss6_demo.dto.ProductDto;
 import com.example.ss6_demo.model.Product;
 import com.example.ss6_demo.service.IProductService;
 import com.example.ss6_demo.service.ITypeProductService;
@@ -31,6 +32,12 @@ public class ProductController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable int id) {
         iProductService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/create-product")
+    public ResponseEntity<Product> CreateProduct(@RequestBody Product product) {
+        iProductService.save(product);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

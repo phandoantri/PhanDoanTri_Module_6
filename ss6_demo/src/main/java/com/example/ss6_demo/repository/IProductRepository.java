@@ -16,4 +16,6 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
     @Transactional
     @Query(value = "delete from product where id = :id",nativeQuery = true)
      void deleteByIdProduct(int id);
+    @Query(value = "INSERT INTO  product(code,cost,date,name,typeProduct) VALUES(:code,:cost,:date,:name,:typeProduct)",nativeQuery = true)
+    void saveProduct(@Param("name") String name,@Param("code")String code,@Param("cost") Double cost,@Param("date")String date,@Param("typeProduct")Integer typeProduct);
 }

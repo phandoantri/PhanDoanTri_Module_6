@@ -22,4 +22,9 @@ public class ProductService implements IProductService {
     public void delete(int id) {
         iProductRepository.deleteByIdProduct(id);
     }
+
+    @Override
+    public void save(Product product) {
+        iProductRepository.save(product);
+    }
 }
